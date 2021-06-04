@@ -9,7 +9,6 @@ public class harm_manager : MonoBehaviour
     fire_manager fire;
     hunger_manager hunger;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +26,10 @@ public class harm_manager : MonoBehaviour
         {
             fire.active();
         }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            hunger.active();
-        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             frac.active();
         }
+        
     }
 }

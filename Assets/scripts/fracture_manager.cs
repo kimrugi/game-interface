@@ -11,14 +11,30 @@ public class fracture_manager : MonoBehaviour
     public float total_time;
     public float current_time;
     // Start is called before the first frame update
+    public Text text;
+    public void show_text()
+    {
+        if (is_active)
+        {
+            Color color = text.color;
+            color.a = 1.0f;
+            text.color = color;
+        }
+    }
+
+    public void hide_text()
+    {
+        Color color = text.color;
+        color.a = 0.0f;
+        text.color = color;
+    }
     void deactive()
     {
         Image image = GameObject.Find("fracture_image").GetComponent<Image>();
         Color color = image.color;
         color.a = 0.0f;
         image.color = color;
-        Text text = GameObject.Find("fracture_text").GetComponent<Text>();
-        text.color = color;
+        
         gage.fillAmount = 0.0f;
         current_time = 0.0f;
         is_active = false;
@@ -29,8 +45,7 @@ public class fracture_manager : MonoBehaviour
         Color color = image.color;
         color.a = 1.0f;
         image.color = color;
-        Text text = GameObject.Find("fracture_text").GetComponent<Text>();
-        text.color = color;
+
         current_time = 10.0f;
         is_active = true;
     }
@@ -41,6 +56,7 @@ public class fracture_manager : MonoBehaviour
         deactive();
         total_time = 10;
         current_time = 0;
+        hide_text();
     }
 
     // Update is called once per frame

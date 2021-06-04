@@ -65,7 +65,16 @@ public class levelup_button_manager : MonoBehaviour
         for(int i = 0; i < 9; ++i)
         {
             if (texts[i])
-                texts[i].text = string.Format("+{0}", stat_up_arr[i]);
+            {
+                if (stat_up_arr[i] > 0)
+                {
+                    texts[i].text = string.Format("+{0}", stat_up_arr[i]);
+                }
+                else
+                {
+                    texts[i].text = string.Format("", stat_up_arr[i]);
+                }
+            }
         }
     }
 
