@@ -10,24 +10,24 @@ public class hunger_manager : MonoBehaviour
     public float current_time;
     // Start is called before the first frame update
     public Text text;
+    public fade_in_out fade;
 
     public void deactive()
     {
-        Image image = GameObject.Find("hunger_image").GetComponent<Image>();
-        Color color = image.color;
-        color.a = 0.0f;
-        image.color = color;
         
+        fade.fade_out();
+        
+
         current_time = 0.0f;
         is_active = false;
     }
     public void active()
     {
-        Image image = GameObject.Find("hunger_image").GetComponent<Image>();
-        Color color = image.color;
-        color.a = 1.0f;
-        image.color = color;
-       
+        if (!is_active)
+        {
+            fade.fade_in();
+        }
+
         current_time = total_time;
         is_active = true;
     }

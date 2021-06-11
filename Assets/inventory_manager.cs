@@ -6,6 +6,7 @@ public class inventory_manager : MonoBehaviour
 {
     public GameObject inventory_canvas;
     bool inventory_on;
+    public levelup_button_manager lbm;
     void Start()
     {
         inventory_on = false;
@@ -19,6 +20,7 @@ public class inventory_manager : MonoBehaviour
             {
                 inventory_on = false;
                 inventory_canvas.SetActive(false);
+                lbm.cancle();
             }
             else
             {

@@ -14,26 +14,35 @@ public class fire_manager : MonoBehaviour
     float damage_time;
     float fire_damage;
     public Text text;
+    public fade_in_out fade;
 
     void deavtive()
     {
+        /*
         Image fire_image = GameObject.Find("fire_image").GetComponent<Image>();
         Color color = fire_image.color;
         color.a = 0.0f;
         fire_image.color = color;
-        
+        */
+        fade.fade_out();
+
         fire_gage.fillAmount = 0.0f;
         current_time = 0.0f;
         is_active = false;
     }
     public void active()
     {
+        /*
         Image fire_image = GameObject.Find("fire_image").GetComponent<Image>();
         Color color = fire_image.color;
         color.a = 1.0f;
         fire_image.color = color;
-        
-        
+        */
+        if (!is_active)
+        {
+            fade.fade_in();
+        }
+
         fire_gage.fillAmount = 1.0f;
         current_time = 10;
         is_active = true;

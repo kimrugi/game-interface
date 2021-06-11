@@ -22,7 +22,9 @@ public class health_bar_management : MonoBehaviour
 
     void color_change(Image image)
     {
+        Color color_alpha = image.color;
         Color color = Color.Lerp(Color.red, full_color, image.fillAmount);
+        color.a = color_alpha.a;
         image.color = color;
     }
 

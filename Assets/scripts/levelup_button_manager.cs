@@ -8,9 +8,14 @@ public class levelup_button_manager : MonoBehaviour
     int[] stat_up_arr = new int[9];
     public Player player;
     public Text[] texts;
+    public Text skill_point_text;
+    int skill_point;
     public void health_up()
     {
-        stat_up_arr[0] += 1;
+        if (skill_point > 0)
+        {
+            stat_up_arr[0] += 1;
+        }
     }
     public void stamina_up()
     {
@@ -49,6 +54,18 @@ public class levelup_button_manager : MonoBehaviour
         player.stat_up(stat_up_arr);
         for(int i = 0; i < 9; ++i)
         {
+            skill_point -= stat_up_arr[i];
+            stat_up_arr[i] = 0;
+        }
+        if (skill_point_text)
+        {
+            skill_point_text.text = string.Format("스킬 포인트: {0}", skill_point);
+        }
+    }
+    public void cancle()
+    {
+        for (int i = 0; i < 9; ++i)
+        {
             stat_up_arr[i] = 0;
         }
     }
@@ -56,7 +73,11 @@ public class levelup_button_manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        skill_point = 100;
+        if (skill_point_text)
+        {
+            skill_point_text.text = string.Format("스킬 포인트: {0}", skill_point);
+        }
     }
 
     // Update is called once per frame
@@ -75,6 +96,7 @@ public class levelup_button_manager : MonoBehaviour
                     texts[i].text = string.Format("", stat_up_arr[i]);
                 }
             }
+            
         }
     }
 

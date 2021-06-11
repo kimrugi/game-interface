@@ -12,6 +12,8 @@ public class fracture_manager : MonoBehaviour
     public float current_time;
     // Start is called before the first frame update
     public Text text;
+    public fade_in_out fade;
+
     public void show_text()
     {
         if (is_active)
@@ -30,10 +32,7 @@ public class fracture_manager : MonoBehaviour
     }
     void deactive()
     {
-        Image image = GameObject.Find("fracture_image").GetComponent<Image>();
-        Color color = image.color;
-        color.a = 0.0f;
-        image.color = color;
+        fade.fade_out();
         
         gage.fillAmount = 0.0f;
         current_time = 0.0f;
@@ -41,10 +40,10 @@ public class fracture_manager : MonoBehaviour
     }
     public void active()
     {
-        Image image = GameObject.Find("fracture_image").GetComponent<Image>();
-        Color color = image.color;
-        color.a = 1.0f;
-        image.color = color;
+        if (!is_active)
+        {
+            fade.fade_in();
+        }
 
         current_time = 10.0f;
         is_active = true;
